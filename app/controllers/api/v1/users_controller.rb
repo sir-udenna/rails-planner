@@ -4,6 +4,11 @@ class Api::V1::UsersController < ApplicationController
         users = User.all
         render json: users
     end 
+
+    def show
+        user = User.find(params[:id])
+        render json: user.to_json(include: [:trips, :goals, :appointments, :finance_items, :list_items])
+    end
     
     def create
     user = User.create(user_params)
@@ -23,8 +28,8 @@ class Api::V1::UsersController < ApplicationController
     
     
     private
-    def user_params
-        params.require(:user).permit(:name, :username, :password)
-    end
+    # def user_params
+        # params.require(:user).permit(:name, :username, :password)
+    # end
 
 end

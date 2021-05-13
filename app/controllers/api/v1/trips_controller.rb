@@ -4,6 +4,11 @@ class Api::V1::TripsController < ApplicationController
         trips = Trip.all
         render json: trips
     end 
+
+    def show
+        trip = trip.find(trip_params[:id])
+        render json: trip, except: [:created_at, :updated_at]
+    end
     
     def create
     trip = Trip.create(trip_params)
