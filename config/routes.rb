@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   resources :list_items
   resources :trips
   resources :appointments
+  post '/login', to: "auth#login"
 
     end
   end
-
-  
 end
