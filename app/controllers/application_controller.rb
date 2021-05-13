@@ -7,7 +7,11 @@ class ApplicationController < ActionController::API
         user = User.find(user_id)
         if user
             user
-            # puts user.id
+
+            puts user.id 
+            puts user.username + ' logged in username'
+            puts user.name + ' logged in name'
+            
         else
             user = nil
         end

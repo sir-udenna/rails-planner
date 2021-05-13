@@ -4,10 +4,11 @@ class Api::V1::AuthController < ApplicationController
 
     def login
         user = User.find_by(username: auth_param[:name])
-
+        # byebug
         if user && user.authenticate(auth_param[:password])
             puts 'authenticated'
             render json: {username: user.name, token: JWT.encode({user_id: user.id}, "deez")}
+
         else
             # byebug
             render json: {
@@ -21,7 +22,7 @@ class Api::V1::AuthController < ApplicationController
     def auth_param
         # params.require(:auth)
         # params.permit(:name, :username, :password, :auth)
-        params.permit(:name, :username, :password)
+        params.permit(:name, :username, :password, :auth)
     end
 
 end

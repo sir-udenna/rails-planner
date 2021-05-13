@@ -1,4 +1,5 @@
 class Api::V1::ListItemsController < ApplicationController
+    before_action :logged_in?
 
     def index 
         list_items = ListItem.all
@@ -17,7 +18,8 @@ class Api::V1::ListItemsController < ApplicationController
     
     private
     def listitems_params
-        params.require(:list_item).permit(:user_id, :name)
+        params.require(:list_item)
+        params.permit(:user_id, :name)
     end
 
 end

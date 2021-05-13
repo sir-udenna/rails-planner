@@ -1,4 +1,6 @@
 class Api::V1::FinanceItemsController < ApplicationController
+    before_action :logged_in?
+
 
     def index 
         finance_item = FinanceItem.all

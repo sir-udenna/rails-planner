@@ -1,4 +1,6 @@
 class Api::V1::AppointmentsController < ApplicationController
+    before_action :logged_in?
+
 
     def index 
         appt = Appointment.all
